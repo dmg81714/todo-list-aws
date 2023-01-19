@@ -11,8 +11,6 @@ parameter_overrides = "Stage=\"default\""
 image_repositories = []
 confirm_changeset = true
 
-// s3://aws-sam-cli-managed-default-samclisourcebucket-rxnq3p0xpft3/todo-list-aws/
-
 [staging]
 [staging.deploy]
 [staging.deploy.parameters]
