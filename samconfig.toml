@@ -15,7 +15,7 @@ confirm_changeset = true
 [staging.deploy]
 [staging.deploy.parameters]
 stack_name = "todo-list-aws-staging"
-s3_bucket = "arn:aws:s3:::aws-sam-cli-managed-default-samclisourcebucket-rxnq3p0xpft3"
+s3_bucket = "rxnq3p0xpft3"
 s3_prefix = "todo-list-aws"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
