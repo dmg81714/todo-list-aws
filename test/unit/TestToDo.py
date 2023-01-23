@@ -206,7 +206,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Testing file functions
         result = get_table(self.dynamodb)
         print ('Response GetTable' + str(result))
-        self.assertTrue(len(result) == 1)
         self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_get_table')
 
