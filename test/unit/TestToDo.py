@@ -129,7 +129,15 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_list_todo')
 
-
+    # Mejora cobertura 2
+    def test_list_todo_error(self):
+        print ('---------------------')
+        print ('Start: test_list_todo_error')
+        from src.todoList import get_items
+        # Testing file functions
+        self.assertRaises(TypeError, get_items("", self.dynamodb))
+        print ('End: test_list_todo_error')
+        
     def test_update_todo(self):
         print ('---------------------')
         print ('Start: test_update_todo')
@@ -149,7 +157,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Result Update Item:' + str(result))
         self.assertEqual(result['text'], updated_text)
         print ('End: test_update_todo')
-
 
     def test_update_todo_error(self):
         print ('---------------------')
@@ -182,7 +189,7 @@ class TestDatabaseFunctions(unittest.TestCase):
                 self.uuid,
                 "",
                 self.dynamodb))
-        # Mejora cobertura 2
+        # Mejora cobertura 3
         self.assertRaises(
             Exception,
             update_item(
