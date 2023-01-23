@@ -82,13 +82,14 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(Exception, put_item("", self.dynamodb))
         print ('End: test_put_todo_error')
     
+    # Mejora cobertura 1 
     def test_put_todo_error2(self):
         print ('---------------------')
         print ('Start: test_put_todo_error2')
         # Testing file functions
         from src.todoList import put_item
         # Table mock
-        self.assertRaises(Exception, put_item(-1, -1))
+        self.assertRaises(Exception, put_item(-1, self.dynamodb))
         print ('End: test_put_todo_error2')
 
     def test_get_todo(self):
@@ -181,6 +182,7 @@ class TestDatabaseFunctions(unittest.TestCase):
                 self.uuid,
                 "",
                 self.dynamodb))
+        # Mejora cobertura 2
         self.assertRaises(
             Exception,
             update_item(
