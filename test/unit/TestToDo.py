@@ -204,9 +204,11 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Start: test_get_table')
         from src.todoList import get_table
         # Testing file functions
-        self.assertRaises(TypeError, get_table(self.dynamodb))
+        result = get_table(self.dynamodb)
+        print ('Response GetTable' + str(result))
+        self.assertTrue(len(result) == 1)
+        self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_get_table')
-
 
 if __name__ == '__main__':
     unittest.main()
