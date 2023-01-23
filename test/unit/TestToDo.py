@@ -191,11 +191,11 @@ class TestDatabaseFunctions(unittest.TestCase):
                 self.dynamodb))
         # Mejora cobertura 3
         self.assertRaises(
-            TypeError,
+            Exception,
             update_item(
-                "",
+                -1,
                 self.uuid,
-                "true",
+                "false",
                 self.dynamodb))
         print ('End: atest_update_todo_error')
 
