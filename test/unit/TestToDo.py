@@ -81,16 +81,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(Exception, put_item("", self.dynamodb))
         self.assertRaises(Exception, put_item("", self.dynamodb))
         print ('End: test_put_todo_error')
-    
-    # Mejora cobertura 1 
-    # def test_put_todo_error2(self):
-    #    print ('---------------------')
-    #    print ('Start: test_put_todo_error2')
-    #    # Testing file functions
-    #    from src.todoList import put_item
-    #    # Table mock
-    #    self.assertRaises(Exception, put_item(-1, self.dynamodb))
-    #    print ('End: test_put_todo_error2')
 
     def test_get_todo(self):
         print ('---------------------')
@@ -128,15 +118,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertTrue(len(result) == 1)
         self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_list_todo')
-
-    # Mejora cobertura 2
-    # def test_list_todo_error(self):
-    #    print ('---------------------')
-    #    print ('Start: test_list_todo_error')
-    #    from src.todoList import get_items
-    #    # Testing file functions
-    #    self.assertRaises(TypeError, get_items("", self.dynamodb))
-    #    print ('End: test_list_todo_error')
         
     def test_update_todo(self):
         print ('---------------------')
@@ -189,14 +170,14 @@ class TestDatabaseFunctions(unittest.TestCase):
                 self.uuid,
                 "",
                 self.dynamodb))
-        # Mejora cobertura 3
-        # self.assertRaises(
-        #    Exception,
-        #    update_item(
-        #        -1,
-        #        self.uuid,
-        #        "false",
-        #        self.dynamodb))
+        # Mejora cobertura dmg81714
+        self.assertRaises(
+            Exception,
+            update_item(
+                -1,
+                self.uuid,
+                "false",
+                self.dynamodb))
         print ('End: atest_update_todo_error')
 
     def test_delete_todo(self):
