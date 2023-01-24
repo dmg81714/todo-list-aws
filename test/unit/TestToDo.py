@@ -47,8 +47,8 @@ class TestDatabaseFunctions(unittest.TestCase):
     def test_table_exists(self):
         print ('---------------------')
         print ('Start: test_table_exists')
-        #self.assertTrue(self.table)  # check if we got a result
-        #self.assertTrue(self.table_local)  # check if we got a result
+        # self.assertTrue(self.table)  # check if we got a result
+        # self.assertTrue(self.table_local)  # check if we got a result
 
         print('Table name:' + self.table.name)
         tableName = os.environ['DYNAMODB_TABLE'];
@@ -118,8 +118,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertTrue(len(result) == 1)
         self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_list_todo')
-
-
+        
     def test_update_todo(self):
         print ('---------------------')
         print ('Start: test_update_todo')
@@ -139,7 +138,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Result Update Item:' + str(result))
         self.assertEqual(result['text'], updated_text)
         print ('End: test_update_todo')
-
 
     def test_update_todo_error(self):
         print ('---------------------')
@@ -172,6 +170,14 @@ class TestDatabaseFunctions(unittest.TestCase):
                 self.uuid,
                 "",
                 self.dynamodb))
+        # Mejora cobertura dmg81714
+        self.assertRaises(
+            Exception,
+            update_item(
+                -1,
+                self.uuid,
+                "false",
+                self.dynamodb))
         print ('End: atest_update_todo_error')
 
     def test_delete_todo(self):
@@ -196,8 +202,20 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Start: test_delete_todo_error')
         from src.todoList import delete_item
         # Testing file functions
-        self.assertRaises(TypeError, delete_item("", self.dynamodb))
+        # self.assertRaises(TypeError, delete_item("", self.dynamodb))
+        self.assertRaises(TypeError, delete_item(-1, self.dynamodb))
         print ('End: test_delete_todo_error')
+        
+    # Mejora cobertura dmg81714
+    def test_get_todo_error(self):
+        print ('---------------------')
+        print ('Start: test_get_todo_error')
+        from src.todoList import get_item
+        responseGet = get_item(
+                -1,
+                self.dynamodb)
+        self.assertRaises(TypeError, get_item("", self.dynamodb))
+        print ('End: test_list_todo_error')
 
 if __name__ == '__main__':
     unittest.main()
