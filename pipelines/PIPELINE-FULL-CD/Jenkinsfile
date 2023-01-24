@@ -19,7 +19,7 @@ pipeline {
                     git merge develop
                 """, label: "Merging code to master"
                 sshagent(credentials: ['dmg81714ssh']) {
-                    // sh "git push origin master"
+                    sh "git push origin master"
                 }
 
             }
