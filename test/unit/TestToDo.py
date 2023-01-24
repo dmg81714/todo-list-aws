@@ -174,7 +174,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(
             Exception,
             update_item(
-                "NULL",
+                -1,
                 self.uuid,
                 "false",
                 self.dynamodb))
