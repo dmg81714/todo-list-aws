@@ -174,9 +174,9 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(
             Exception,
             update_item(
-                NULL,
+                "",
                 self.uuid,
-                "false",
+                "true",
                 self.dynamodb))
         print ('End: atest_update_todo_error')
 
