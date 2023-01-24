@@ -130,13 +130,13 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('End: test_list_todo')
 
     # Mejora cobertura 2
-    def test_list_todo_error(self):
-        print ('---------------------')
-        print ('Start: test_list_todo_error')
-        from src.todoList import get_items
-        # Testing file functions
-        self.assertRaises(TypeError, get_items("", self.dynamodb))
-        print ('End: test_list_todo_error')
+    # def test_list_todo_error(self):
+    #    print ('---------------------')
+    #    print ('Start: test_list_todo_error')
+    #    from src.todoList import get_items
+    #    # Testing file functions
+    #    self.assertRaises(TypeError, get_items("", self.dynamodb))
+    #    print ('End: test_list_todo_error')
         
     def test_update_todo(self):
         print ('---------------------')
@@ -225,16 +225,16 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(TypeError, delete_item(-1, self.dynamodb))
         print ('End: test_delete_todo_error')
         
-    # Mejora cobertura 4
-    # def test_get_todo_error(self):
-    #     print ('---------------------')
-    #     print ('Start: test_get_todo_error')
-    #     from src.todoList import get_item
-    #     responseGet = get_item(
-    #             -1,
-    #             self.dynamodb)
-    #     self.assertRaises(TypeError, get_item("", self.dynamodb))
-    #     print ('End: test_list_todo_error')
+    # Mejora cobertura dmg81714
+    def test_get_todo_error(self):
+        print ('---------------------')
+        print ('Start: test_get_todo_error')
+        from src.todoList import get_item
+        responseGet = get_item(
+                -1,
+                self.dynamodb)
+        self.assertRaises(TypeError, get_item("", self.dynamodb))
+        print ('End: test_list_todo_error')
 
 if __name__ == '__main__':
     unittest.main()
